@@ -3,15 +3,18 @@
 
 <body>
   <div id="root"></div>
+  <div id="interpolateRoot"></div>
+  <div id="spreadRoot"></div>
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
 
   <!-- 🐨 add Babel to the page.
        💰 Here is the script tag that'll do the job:
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   -->
 
-  <script type="module">
+  <script type="text/babel">
     // 🐨 on the script tag above, change `type="module"`
     // to `type="text/babel"` so babel will compile this code for the browser to run.
 
@@ -20,6 +23,7 @@
       className: 'container',
       children: 'Hello World',
     })
+    const jsxElement = <div className="container">Hello World</div>
 
     // 💰 there are a few subtle differences between JSX and HTML. One such
     // difference is how you apply a class to an element in JSX is by using
@@ -27,6 +31,25 @@
     // 📜 You can learn the differences between JSX and HTML syntax from the React docs here:
     // https://reactjs.org/docs/dom-elements.html#differences-in-attributes
 
-    ReactDOM.createRoot(document.getElementById('root')).render(element)
+    const containerText = 'container'
+    const worldElement = 'Hello World'
+    const props = {
+      className:containerText, 
+      children:worldElement,
+    }
+  
+    const jsxInterpolateElement = <div className = 
+    {containerText}> 
+    <strong>
+      {worldElement} 
+    </strong>
+    </div>
+
+    const jsxSpreadElement = <div {...props} />
+
+    ReactDOM.createRoot(document.getElementById('root')).render(jsxElement)
+    ReactDOM.createRoot(document.getElementById('interpolateRoot')).render(jsxInterpolateElement)
+    ReactDOM.createRoot(document.getElementById('spreadRoot')).render(jsxSpreadElement)
+    
   </script>
 </body>
