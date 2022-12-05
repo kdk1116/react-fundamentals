@@ -31,9 +31,20 @@
       return (
         <div className="message"> {greeting}, {subject}</div>
       )}
-
+    
+    //  Message.propTypes = {
+    //   subject(props, propName, componentName) {
+    //     console.log(props, propName, componentName, typeof props[propName])
+    //     const type = typeof props[propName]
+    //     if (type !== 'string') {
+    //       return new Error(
+    //         `Hey, the component ${componentName} needs the prop ${propName} to be a string, but a ${typeof props[propName]} was passed` 
+    //       )
+    //     }
+    //   }
+    //  } 
     Message.propTypes = {
-      subject: PropTypes.string.isRequired,
+      subject: PropTypes.string.isRequired, 
       greeting: PropTypes.string.isRequired,
     }
 
@@ -59,7 +70,7 @@
 
     const runtimeElement = (
       <>
-        <Message greeting="Hello" subject="World"/>
+        <Message greeting="Hello" subject={"World"}/>
         <Message greeting="Goodbye" subject="World"/>
       </>
     )
